@@ -7,16 +7,13 @@ import model.ChessboardPoint;
 import java.awt.*;
 
 /**
- * 表示棋盘上非空棋子的格子，是所有非空棋子的父类，继承了方格squarecomponent类
- * 构造器：设置棋子的坐标，位置，颜色，clickcontroller，size（就是squarecomponent的构造器
- * 属性：棋子的名字
- * 方法：父类的方法 重写：给方块涂色，变成了画个空棋子，可以改成贴图
+ * 表示棋盘上非空棋子的格子，是所有非空棋子的父类
  */
 public class ChessComponent extends SquareComponent{
     protected String name;// 棋子名字：例如 兵，卒，士等
 
-    protected ChessComponent(ChessboardPoint chessboardPoint, Point location, ChessColor chessColor, String abbreviation) {
-        super(chessboardPoint, location, chessColor, abbreviation);
+    protected ChessComponent(ChessboardPoint chessboardPoint, Point location, ChessColor chessColor, ClickController clickController, int size) {
+        super(chessboardPoint, location, chessColor, clickController, size);
     }
     @Override
     protected void paintComponent(Graphics g) {
@@ -24,7 +21,7 @@ public class ChessComponent extends SquareComponent{
         //绘制棋子填充色
         g.setColor(Color.ORANGE);
         g.fillOval(spacingLength, spacingLength, this.getWidth() - 2 * spacingLength, this.getHeight() - 2 * spacingLength);
-        //绘制棋子边框
+       //绘制棋子边框
         g.setColor(Color.DARK_GRAY);
         g.drawOval(spacingLength, spacingLength, getWidth() - 2 * spacingLength, getHeight() - 2 * spacingLength);
 
